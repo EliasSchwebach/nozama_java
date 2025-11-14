@@ -1,0 +1,118 @@
+package nozama;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JList;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.JTextField;
+import java.awt.Color;
+
+public class GUI extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JButton btnNR;
+	private JList listWare;
+	private JButton btnNL;
+	private JList listWarenkorb;
+	private JTextPane txtpnKundenname;
+	private JTextField textFieldName;
+	private JButton btnNewBestellen;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GUI frame = new GUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public GUI() {
+
+		initialize();
+	}
+	private void initialize() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.add(getBtnNR());
+		contentPane.add(getListWare());
+		contentPane.add(getBtnNL());
+		contentPane.add(getList_1());
+		contentPane.add(getTxtpnKundenname());
+		contentPane.add(getTextFieldName());
+		contentPane.add(getBtnNewBestellen());
+	}
+	private JButton getBtnNR() {
+		if (btnNR == null) {
+			btnNR = new JButton(">");
+			btnNR.setBounds(165, 43, 89, 23);
+		}
+		return btnNR;
+	}
+	private JList getListWare() {
+		if (listWare == null) {
+			listWare = new JList();
+			listWare.setBackground(new Color(192, 192, 192));
+			listWare.setBounds(36, 43, 119, 99);
+		}
+		return listWare;
+	}
+	private JButton getBtnNL() {
+		if (btnNL == null) {
+			btnNL = new JButton("<");
+			btnNL.setBounds(165, 94, 89, 23);
+		}
+		return btnNL;
+	}
+	private JList getList_1() {
+		if (listWarenkorb == null) {
+			listWarenkorb = new JList();
+			listWarenkorb.setBackground(new Color(192, 192, 192));
+			listWarenkorb.setBounds(289, 46, 101, 96);
+		}
+		return listWarenkorb;
+	}
+	private JTextPane getTxtpnKundenname() {
+		if (txtpnKundenname == null) {
+			txtpnKundenname = new JTextPane();
+			txtpnKundenname.setText("Kundenname");
+			txtpnKundenname.setBounds(10, 219, 94, 20);
+		}
+		return txtpnKundenname;
+	}
+	private JTextField getTextFieldName() {
+		if (textFieldName == null) {
+			textFieldName = new JTextField();
+			textFieldName.setBounds(93, 219, 86, 20);
+			textFieldName.setColumns(10);
+		}
+		return textFieldName;
+	}
+	private JButton getBtnNewBestellen() {
+		if (btnNewBestellen == null) {
+			btnNewBestellen = new JButton("Bestellung Abschließen");
+			btnNewBestellen.setBounds(250, 219, 174, 23);
+		}
+		return btnNewBestellen;
+	}
+}

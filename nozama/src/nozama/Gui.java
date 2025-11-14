@@ -12,7 +12,7 @@ import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import java.awt.Color;
 
-public class GUI extends JFrame {
+public class Gui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -23,30 +23,25 @@ public class GUI extends JFrame {
 	private JTextPane txtpnKundenname;
 	private JTextField textFieldName;
 	private JButton btnNewBestellen;
+	private Controller controller;
+	
+	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public Gui(Controller controller) {
 
 		initialize();
+		this.controller = controller;
 	}
+	
+	
 	private void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -61,6 +56,7 @@ public class GUI extends JFrame {
 		contentPane.add(getTxtpnKundenname());
 		contentPane.add(getTextFieldName());
 		contentPane.add(getBtnNewBestellen());
+		setVisible(true);
 	}
 	private JButton getBtnNR() {
 		if (btnNR == null) {

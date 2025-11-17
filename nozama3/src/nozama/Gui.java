@@ -65,7 +65,7 @@ public class Gui extends JFrame {
 		}
 		return btnNR;
 	}
-	private JList getListWare() {
+	protected JList getListWare() {
 		if (listWare == null) {
 			listWare = new JList();
 			listWare.setBackground(new Color(192, 192, 192));

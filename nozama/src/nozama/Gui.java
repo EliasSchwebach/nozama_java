@@ -92,14 +92,14 @@ public class Gui extends JFrame {
 		if (txtpnKundenname == null) {
 			txtpnKundenname = new JTextPane();
 			txtpnKundenname.setText("Kundenname");
-			txtpnKundenname.setBounds(10, 219, 94, 20);
+			txtpnKundenname.setBounds(10, 219, 84, 20);
 		}
 		return txtpnKundenname;
 	}
 	private JTextField getTextFieldName() {
 		if (textFieldName == null) {
 			textFieldName = new JTextField();
-			textFieldName.setBounds(93, 219, 86, 20);
+			textFieldName.setBounds(104, 219, 86, 20);
 			textFieldName.setColumns(10);
 		}
 		return textFieldName;

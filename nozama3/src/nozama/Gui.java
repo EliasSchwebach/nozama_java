@@ -11,6 +11,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Gui extends JFrame {
 
@@ -52,15 +54,24 @@ public class Gui extends JFrame {
 		contentPane.add(getBtnNR());
 		contentPane.add(getListWare());
 		contentPane.add(getBtnNL());
-		contentPane.add(getList_1());
+		contentPane.add(getListWarenkorb());
 		contentPane.add(getTxtpnKundenname());
 		contentPane.add(getTextFieldName());
 		contentPane.add(getBtnNewBestellen());
 		setVisible(true);
 	}
-	private JButton getBtnNR() {
-		if (btnNR == null) {
+	private JButton getBtnNR() 
+	{
+		if (btnNR == null)
+		{
 			btnNR = new JButton(">");
+			btnNR.addActionListener(new ActionListener() 
+			{
+				public void actionPerformed(ActionEvent e) 
+				{
+					controller.hinzufuegenWarenkorb(getListWare().getSelectedValue());
+				}
+			});
 			btnNR.setBounds(165, 43, 89, 23);
 		}
 		return btnNR;
@@ -73,14 +84,20 @@ public class Gui extends JFrame {
 		}
 		return listWare;
 	}
-	private JButton getBtnNL() {
+	protected JButton getBtnNL() {
 		if (btnNL == null) {
 			btnNL = new JButton("<");
+			btnNL.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e)
+				{
+					controller.entfernenWarenkorb(getListWarenkorb().getSelectedValue());
+				}
+			});
 			btnNL.setBounds(165, 94, 89, 23);
 		}
 		return btnNL;
 	}
-	private JList getList_1() {
+	protected JList getListWarenkorb() {
 		if (listWarenkorb == null) {
 			listWarenkorb = new JList();
 			listWarenkorb.setBackground(new Color(192, 192, 192));

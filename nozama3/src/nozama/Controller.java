@@ -14,9 +14,12 @@ import javax.swing.DefaultListModel;
 public class Controller 
 {
 	private DefaultListModel<Warenkorb> dlmWarenkorb = new DefaultListModel<Warenkorb>();
+	private DefaultListModel<Warenkorb> dlmWarenkorbliste = new DefaultListModel<Warenkorb>();
 	private Gui gui;
 	private BufferedReader in;
 	private ArrayList<Warenkorb> warenkorb = new ArrayList<Warenkorb>();
+	
+	
 	
 	public Controller()
 	{
@@ -66,9 +69,22 @@ public class Controller
 		fuellenListe();
 	}
 	
+	public void hinzufuegenWarenkorb(Object o)
+	{
+		this.dlmWarenkorbliste.addElement((Warenkorb) o);
+		this.dlmWarenkorb.removeElement(o);
+	}
+	
+	public void entfernenWarenkorb(Object o)
+	{
+		this.dlmWarenkorbliste.removeElement(o);
+		this.dlmWarenkorb.addElement((Warenkorb) o);
+	}
+	
 	public void setModels()
 	{
 		gui.getListWare().setModel(dlmWarenkorb);
+		gui.getListWarenkorb().setModel(dlmWarenkorbliste);
 	}
 	
 	public void fuellenListe()

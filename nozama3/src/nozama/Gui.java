@@ -105,7 +105,7 @@ public class Gui extends JFrame {
 		}
 		return listWarenkorb;
 	}
-	private JTextPane getTxtpnKundenname() {
+	protected JTextPane getTxtpnKundenname() {
 		if (txtpnKundenname == null) {
 			txtpnKundenname = new JTextPane();
 			txtpnKundenname.setText("Kundenname");
@@ -113,7 +113,7 @@ public class Gui extends JFrame {
 		}
 		return txtpnKundenname;
 	}
-	private JTextField getTextFieldName() {
+	protected JTextField getTextFieldName() {
 		if (textFieldName == null) {
 			textFieldName = new JTextField();
 			textFieldName.setBounds(104, 219, 86, 20);
@@ -124,6 +124,12 @@ public class Gui extends JFrame {
 	private JButton getBtnNewBestellen() {
 		if (btnNewBestellen == null) {
 			btnNewBestellen = new JButton("Bestellung Abschließen");
+			btnNewBestellen.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) 
+				{
+					controller.schreiben(getTextFieldName().getText());
+				}
+			});
 			btnNewBestellen.setBounds(250, 219, 174, 23);
 		}
 		return btnNewBestellen;

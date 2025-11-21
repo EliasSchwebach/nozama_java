@@ -1,15 +1,19 @@
 package nozama;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Controller 
 {
@@ -17,7 +21,10 @@ public class Controller
 	private DefaultListModel<Warenkorb> dlmWarenkorbliste = new DefaultListModel<Warenkorb>();
 	private Gui gui;
 	private BufferedReader in;
+	private BufferedWriter out;
 	private ArrayList<Warenkorb> warenkorb = new ArrayList<Warenkorb>();
+	private String dateipfad = "H:\\git\\nozama_java\\nozama3\\src\\Bestellung\\";
+	
 	
 	
 	
@@ -85,6 +92,35 @@ public class Controller
 	{
 		gui.getListWare().setModel(dlmWarenkorb);
 		gui.getListWarenkorb().setModel(dlmWarenkorbliste);
+	}
+	
+	public void schreiben(String text)
+	{
+		try {
+			BufferedWriter out = Files.newBufferedWriter(Paths.get(dateipfad + text));
+			
+			try {
+				out.write(dlmWarenkorbliste.toString());
+				out.newLine();
+			} catch (Exception e) {
+				System.out.println("Fehler");
+			} finally {
+				out.close();
+			}
+		} catch (IOException e) {
+			System.out.println("Fehler");
+		}
+		bestellBestaetigung();
+	}
+	
+	public void bestellBestaetigung()
+	{
+		JOptionPane test = new JOptionPane("Bestätigung");
+		test.showMessageDialog(null, "Vielen Dank für ihre Bestellung");
+		test.setVisible(true);
+		dlmWarenkorbliste.removeAllElements();
+		gui.getTextFieldName().setText("");	
+		
 	}
 	
 	public void fuellenListe()

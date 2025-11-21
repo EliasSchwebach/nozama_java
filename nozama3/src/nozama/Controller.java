@@ -33,6 +33,7 @@ public class Controller
 		this.gui = new Gui(this);
 		setModels();
 		dateiEinlesen();
+		
 	}
 	
 	public void dateiEinlesen()

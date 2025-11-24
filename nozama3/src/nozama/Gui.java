@@ -65,17 +65,16 @@ public class Gui extends JFrame {
 		if (btnNR == null)
 		{
 			btnNR = new JButton(">");
-			btnNR.addActionListener(new ActionListener() 
-			{
-				public void actionPerformed(ActionEvent e) 
-				{
-					controller.hinzufuegenWarenkorb(getListWare().getSelectedValue());
-				}
-			});
 			btnNR.setBounds(165, 43, 89, 23);
 		}
 		return btnNR;
 	}
+	
+	public void setBtnNR(ActionListener l)
+	{
+		this.btnNR.addActionListener(l);
+	}
+	
 	protected JList getListWare() {
 		if (listWare == null) {
 			listWare = new JList();
@@ -84,19 +83,21 @@ public class Gui extends JFrame {
 		}
 		return listWare;
 	}
-	protected JButton getBtnNL() {
-		if (btnNL == null) {
+	
+	private JButton getBtnNL() {
+		if (btnNL == null)
+		{
 			btnNL = new JButton("<");
-			btnNL.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e)
-				{
-					controller.entfernenWarenkorb(getListWarenkorb().getSelectedValue());
-				}
-			});
 			btnNL.setBounds(165, 94, 89, 23);
 		}
 		return btnNL;
 	}
+	
+	public void setBtnNL(ActionListener l)
+	{
+		this.btnNL.addActionListener(l);
+	}
+	
 	protected JList getListWarenkorb() {
 		if (listWarenkorb == null) {
 			listWarenkorb = new JList();
@@ -121,17 +122,18 @@ public class Gui extends JFrame {
 		}
 		return textFieldName;
 	}
-	private JButton getBtnNewBestellen() {
-		if (btnNewBestellen == null) {
+	private JButton getBtnNewBestellen() 
+	{
+		if (btnNewBestellen == null) 
+		{
 			btnNewBestellen = new JButton("Bestellung Abschließen");
-			btnNewBestellen.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) 
-				{
-					controller.schreiben(getTextFieldName().getText());
-				}
-			});
 			btnNewBestellen.setBounds(250, 219, 174, 23);
 		}
 		return btnNewBestellen;
 	}
+	public void setBtnNB(ActionListener l)
+	{
+		this.btnNewBestellen.addActionListener(l);
+	}
+	
 }

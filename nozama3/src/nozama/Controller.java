@@ -1,5 +1,7 @@
 package nozama;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -33,8 +35,48 @@ public class Controller
 		this.gui = new Gui(this);
 		setModels();
 		dateiEinlesen();
+		registriereListenner();
 		
 	}
+	
+	public void registriereListenner()
+	{
+		this.gui.setBtnNR(new BtnNrListener());
+		this.gui.setBtnNL(new BtnNlListener());
+		this.gui.setBtnNB(new BtnNBListener());
+	}
+	
+	class BtnNBListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			schreiben(gui.getTextFieldName().getText());	
+		}
+		
+	}
+	
+	class BtnNrListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			hinzufuegenWarenkorb(gui.getListWare().getSelectedValue());	
+		}
+	}
+	
+	class BtnNlListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			entfernenWarenkorb(gui.getListWarenkorb().getSelectedValue());
+			
+		}
+		
+	}
+	
 	
 	public void dateiEinlesen()
 	{

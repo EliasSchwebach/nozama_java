@@ -41,43 +41,12 @@ public class Controller
 	
 	public void registriereListenner()
 	{
-		this.gui.setBtnNR(new BtnNrListener());
-		this.gui.setBtnNL(new BtnNlListener());
-		this.gui.setBtnNB(new BtnNBListener());
+		this.gui.setBtnNR(e -> hinzufuegenWarenkorb( gui.getListWare().getSelectedValue()));
+		this.gui.setBtnNL(e -> entfernenWarenkorb(gui.getListWarenkorb().getSelectedValue()));
+		this.gui.setBtnNB(e -> schreiben(gui.getTextFieldName().getText()));
 	}
 	
-	class BtnNBListener implements ActionListener
-	{
 
-		@Override
-		public void actionPerformed(ActionEvent e) 
-		{
-			schreiben(gui.getTextFieldName().getText());	
-		}
-		
-	}
-	
-	class BtnNrListener implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			hinzufuegenWarenkorb(gui.getListWare().getSelectedValue());	
-		}
-	}
-	
-	class BtnNlListener implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			entfernenWarenkorb(gui.getListWarenkorb().getSelectedValue());
-			
-		}
-		
-	}
-	
-	
 	public void dateiEinlesen()
 	{
 		try 
